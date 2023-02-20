@@ -2,16 +2,28 @@
 
 Some personal studies related with Data Structures and Algorithms in Js/Ts and System Design
 
-## Studies Organized
+## 🚀 Resources Used 
+
+- ✅ **[TypeScript](https://www.typescriptlang.org/download)**
+- ✅ **[GitHub Copilot](https://github.com/features/copilot)**
+- ✅ **[Visual Studio Code](https://code.visualstudio.com/)**
+
+## 📕 Studies Organized
 
 The studies are organized by weeks. Each week, there will be 10 hours (2 hours a day) of dedicated study on DSA. The studies are organized in the following way:
 
-### Week 01
+* 🟩Easy 
+* 🟧Medium
+* 🟥Difficult 
 
-|  Day   | Title |  Language  | Difficult  | Resources    |
-| :----: | :---: | :--------: | ---------- | ------------ |
-| Day 01 | test  | TypeScript | 🟩Easy      | **[HERE]()** |
-| Day 02 |       | TypeScript | 🟧Medium    | **[HERE]()** |
-| Day 03 |       | TypeScript | 🟥Difficult | **[HERE]()** |
+### 📆 Week 01
+
+|  Day   | Topic |  Language  | Difficult | Resources    |
+| :----: | :---: | :--------: | --------- | ------------ |
+| Day 01 | test  | TypeScript | 🟩Easy     | **[HERE]()** |
+| Day 02 |       | TypeScript | 🟩Easy     | **[HERE]()** |
+| Day 03 |       | TypeScript | 🟩Easy     | **[HERE]()** |
+| Day 04 |       | TypeScript | 🟩Easy     | **[HERE]()** |
+| Day 05 |       | TypeScript | 🟩Easy     | **[HERE]()** |
 			
 
