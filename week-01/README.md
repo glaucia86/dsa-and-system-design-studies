@@ -6,11 +6,11 @@ Here you will understand what Big (O) is, when you can use it in your daily life
 
 <details><summary><b>Section 02: Big O Notation</b></summary>
 
-- [ ] 05 - Intro to Big O
-- [ ] 06 - Timing Our Code
-- [ ] 07 - Counting Operations
-- [ ] 08 - Visualizing Time Complexities
-- [ ] 09 - Official Intro to Big O
+- [ x ] 05 - Intro to Big O
+- [ x ] 06 - Timing Our Code
+- [ x ] 07 - Counting Operations
+- [ x ] 08 - Visualizing Time Complexities
+- [ x ] 09 - Official Intro to Big O
 - [ ] 10 - Simplifying Big O Expressions
 - [ ] Test 1: Big O Time Complexity Quiz
 - [ ] Test 2: Big O Time Complexity Quiz 2
