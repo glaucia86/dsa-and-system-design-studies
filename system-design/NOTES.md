@@ -67,3 +67,157 @@ Here are the key elements of a sharded database system design:
 - [Video: Sharding Databases](https://youtu.be/5faMjKuB9bc)
 - [Sharding Databases](https://www.geeksforgeeks.org/database-sharding-a-system-design-concept/)
 - [Sharding Databases](https://igotanoffer.com/blogs/tech/sharding-system-design-interview)
+
+### ACID Compliance
+
+ACID compliance is a set of properties that guarantee that database transactions are processed reliably. The acronym ACID stands for Atomicity, Consistency, Isolation, and Durability.
+
+**Atomicity:** Either the entire transaction succeds, or the entire thing fails.
+
+**Consistency:** All database rules are ennforced, or the entire transaction is rolled back.
+
+**Isolation:** No transaction is affected by any other transaction that is still in progress.
+
+**Durability:** Once a transaction is committed, it stays, even of the system crashes immediately after.
+
+### Resources
+
+- [ACID Compliance](https://blog.betrybe.com/tecnologia/acid-porque-usar/)
+
+
+### Cap Theorem
+
+The CAP theorem is a theory that states that in a distributed database system, it is impossible to simultaneously guarantee all three of the following properties:
+
+**Consistency:** Every read from the database receives the most recent write or an error.
+
+**Availability:** Every request for data receives a response, without guarantee that it contains the most recent version of the information.
+
+**Partition tolerance:** The system continues to function even when network partitions occur, which means that messages sent between nodes may be lost or delayed.
+
+The CAP theorem asserts that a distributed database system can guarantee at most two of these properties at the same time. Therefore, a system that prioritizes consistency and availability may not be partition-tolerant, while a system that prioritizes availability and partition-tolerance may not guarantee consistency of the data.
+
+The CAP theorem is important for designing distributed database systems and allows developers to choose between consistency and availability, depending on the needs of the system. For example, a system that manages financial transactions should prioritize consistency, while a real-time sensor monitoring system should prioritize availability and partition-tolerance.
+
+### Resources
+
+- [CAP Theorem](https://www.educative.io/blog/what-is-cap-theorem)
+
+### Caching
+
+Caching is a technique used to improve the performance of a system by storing frequently accessed data in a cache, which is a temporary data storage area. The goal of caching is to reduce the number of requests to the database, which can improve the response time of the system.
+
+How caches work:
+
+* Horizontally scaled servers
+* Clients hash requests to a given server 
+* In-memory (fast)
+* Appropriate for applications with more reads than writes
+* The _expiration policy_ dictates how long data is cached. Too long and your data may go stale. Too short and the cache won't do much good. 
+* _Hotspots_ can be a problem (the "celebrity problem")
+* Cold-start is also a problem. How do you initially warm up the cache without bringing down whatever you are caching?
+
+### Caching Eviction Policies
+
+**FIFO:** This policy evicts the oldest items from the cache when the cache is full. This policy is simple to implement and is useful when the data being cached is not frequently accessed..
+
+**LRU:** This policy evicts the least recently used items from the cache when the cache is full. This is a popular eviction policy as it tends to work well in most use cases.
+
+**LFU:** This policy evicts the least frequently used items from the cache when the cache is full. This policy is useful when the application has a high rate of data access and some data is accessed more frequently than others.
+
+**Random:** This policy evicts items from the cache randomly when the cache is full. This policy is easy to implement and can be effective in some situations.
+
+### Resources
+
+- [Cache Eviction Policies](https://www.codecademy.com/article/cache-eviction-policies)
+
+### Content Delivery Networks
+
+A Content Delivery Network (CDN) is a distributed network of servers that work together to provide faster and more reliable content delivery to users. A CDN system design involves a range of components, including edge servers, origin servers, caching systems, load balancers, and content distribution algorithms.
+
+Here's a high-level overview of a typical CDN system design:
+
+Edge servers: Edge servers are the servers closest to the end-users geographically. They are responsible for caching and serving content to users.
+
+Origin servers: Origin servers are the servers where the original content is stored. Edge servers fetch content from origin servers as needed.
+
+Caching system: The caching system stores frequently accessed content in the edge servers to reduce the load on the origin servers and improve content delivery times.
+
+Load balancers: Load balancers distribute incoming requests across the edge servers to ensure that the load is evenly distributed and that the system can handle high traffic loads.
+
+Content distribution algorithms: Content distribution algorithms determine which edge server should serve the content to the user based on factors such as network latency, server load, and geographic location.
+
+Monitoring and analytics: A CDN system must have monitoring and analytics in place to track system performance, identify issues, and optimize the system over time.
+
+When designing a CDN system, it's important to consider factors such as the geographic distribution of users, the type of content being delivered, and the expected traffic load. CDNs can be deployed using a range of architectures, including fully distributed, hybrid, and virtualized architectures.
+
+Overall, a well-designed CDN system can significantly improve the performance and reliability of content delivery, enabling organizations to provide a better user experience and meet the needs of their users more effectively.
+
+### Resiliency
+
+Resiliency system design involves designing a system that is able to maintain its functionality in the face of disruptions, failures, or other unexpected events. The goal of a resilient system is to minimize downtime, reduce the impact of disruptions, and ensure that the system can quickly recover from failures.
+
+However is necessary to be smart about distributing your servers. Some points to talk here:
+
+* Secondaries should be spread across multiple racks, availability zones, and regions
+
+* Make sure your system has enough capacity to survive a failure at any reasonable scale.
+
+* You may need to balance budget vs availability. Not every system warrants this.
+    - Provisioning a new server from an offsite backup might be good enough.
+
+
+### Distributed Storage
+
+Distributed storage solutions are a popular choice for system design because they offer several advantages over traditional centralized storage solutions. Distributed storage solutions are designed to store data across multiple servers, which can improve reliability, availability, and scalability.
+
+Here are some common distributed storage solutions for system design:
+
+Distributed file systems: Distributed file systems allow multiple servers to share the same file system, which can improve scalability and availability. Popular distributed file systems include Hadoop Distributed File System (HDFS), GlusterFS, and Ceph.
+
+Object storage systems: Object storage systems are designed to store large amounts of unstructured data, such as images, videos, and audio files. Object storage systems use a flat address space to store objects, which can improve scalability and performance. Popular object storage systems include Amazon S3, Google Cloud Storage, and OpenStack Swift.
+
+Key-value stores: Key-value stores are designed to store large amounts of structured data, such as user profiles, session data, and application settings. Key-value stores use a simple key-value interface to store and retrieve data, which can improve performance and scalability. Popular key-value stores include Redis, Apache Cassandra, and Riak.
+
+Distributed databases: Distributed databases allow multiple servers to share the same database, which can improve scalability and availability. Distributed databases can be categorized into two types: sharded databases, which partition the data across multiple servers, and replicated databases, which store multiple copies of the same data on multiple servers. Popular distributed databases include Apache Cassandra, Apache HBase, and CockroachDB.
+
+When designing a system that uses distributed storage solutions, it's important to consider factors such as data consistency, replication, and partitioning, as well as the overall system architecture and the specific requirements of the application. With careful planning and design, distributed storage solutions can provide a highly scalable and reliable foundation for modern systems.
+
+### Some questions:
+
+1. Vertical scaling means: 
+
+A: Vertical scaling means using one server and just making that server more and more powerful as your traffic grows. This can result in a single point of failure and has an upper bound of how far you can scale. But for small, non-critical systems it may be a simple and cost-effective choice.
+
+2. Horizontal Scaling requires:
+
+A: In a horizontally scalable system, every server should be "stateless" and assume that any request could have been handled by itself or by any other server.
+
+3. A database host that is replicated to a backup that's always ready to take over is an example of:
+
+A: Warm standby. When dealing with monolithic relational database hosts, replication is a common backup technique. However scalable systems generally rely on distributed key/value data stores, or more generally object stores, AKA "NoSQL" - as these can be horizontally scaled with backups on each shard.
+
+4. Which NoSQL database has no master node?
+A: Cassandra
+
+5. A downside of denormalized data is...
+A: Updates in a denormalized table can involve iterating through every row, looking for copies of data that must be updated. They also take up more space.
+
+6. Distributed "NoSQL" databases with a master node that distributes transactions fall on which side of the CAP triangle?
+A: Single-master designs favor consistency and partition tolerance. Although in principle availability it what's given up, in practice modern NoSQL databases have highly redundant master nodes that can quickly replace themselves in the event of failure.
+
+7. When designing a cache that discards the data accessed the longest time ago, which eviction policy is appropriate?
+A: LRU
+
+8. If you need to minimize client latency for retrieving static data around the world at any cost, you would use:
+A: A CDN. Content Delivery Networks (CDN's) are aimed at the problem of global traffic and minimizing latency due to long network hops. Load balancers and caching technologies such as Redis can also be parts of low-latency designs, but are not specifically for the problem of global traffic.
+
+9. In HDFS, the server responsible for coordinating requests is called the:
+A: NameNode. In the Hadoop Distributed File System, the name node coordinates how files are broken into blocks, and where those blocks are stored. In high availability settings, multiple name nodes may be present for failover.
+
+
+
+
+
+
+
